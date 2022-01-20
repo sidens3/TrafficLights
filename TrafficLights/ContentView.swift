@@ -10,21 +10,6 @@ import SwiftUI
 struct ContentView: View {
     
     private let cornerRadius: CGFloat = 40
-    @State private var actualTrafficLightState: TrafficState = .disable {
-        didSet {
-            switch actualTrafficLightState {
-                
-            case .disable:
-                trafficLightView.state = .activeGreen
-            case .activeRed:
-                trafficLightView.state = .activeYellow
-            case .activeYellow:
-                trafficLightView.state = .activeGreen
-            case .activeGreen:
-                trafficLightView.state = .activeRed
-            }
-        }
-    }
     
     var body: some View {
         ZStack {
@@ -45,16 +30,16 @@ struct ContentView: View {
     
     private var nextButton: some View {
         Button(action: {
-            switch actualTrafficLightState {
+            switch trafficLightView.state {
                 
             case .disable:
-                actualTrafficLightState = .activeGreen
+                trafficLightView.state = .activeRed
             case .activeRed:
-                actualTrafficLightState = .activeYellow
+                trafficLightView.state = .activeYellow
             case .activeYellow:
-                actualTrafficLightState = .activeGreen
+                trafficLightView.state = .activeGreen
             case .activeGreen:
-                actualTrafficLightState = .activeRed
+                trafficLightView.state = .activeRed
             }
 
         }) {
