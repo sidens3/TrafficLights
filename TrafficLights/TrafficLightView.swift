@@ -31,9 +31,11 @@ struct TrafficLightView: View {
     var body: some View {
         VStack {
             redCircle
+                .padding(.bottom, 16)
             yellowCircle
+                .padding(.bottom, 16)
             greenCircle
-        }
+        }.padding()
     }
 }
 
@@ -45,12 +47,12 @@ struct TrafficCircle: View {
         VStack {
             Circle()
                 .foregroundColor(color)
+                .frame(width: UIScreen.main.bounds.width / 3 ,
+                       height: UIScreen.main.bounds.width / 3)
                 .overlay(Circle().stroke(Color.white, lineWidth: 6))
         }
     }
 }
-
-//    .overlay(Circle().stroke(Color.white, lineWidth: 4))
 
 struct TrafficLightView_Previews: PreviewProvider {
     static var previews: some View {

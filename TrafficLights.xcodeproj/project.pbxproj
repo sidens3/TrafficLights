@@ -55,9 +55,9 @@
 			children = (
 				4AB1D5762799399D000A9B4A /* TrafficLightsApp.swift */,
 				4AB1D5782799399D000A9B4A /* ContentView.swift */,
+				4A07672D27993E8800ABA6AC /* TrafficLightView.swift */,
 				4AB1D57A2799399F000A9B4A /* Assets.xcassets */,
 				4AB1D57C2799399F000A9B4A /* Preview Content */,
-				4A07672D27993E8800ABA6AC /* TrafficLightView.swift */,
 			);
 			path = TrafficLights;
 			sourceTree = "<group>";
