@@ -20,33 +20,33 @@ enum TrafficState {
 }
 
 struct TrafficLightView: View {
-    var state: TrafficState {
+    var trafficState: TrafficState {
         didSet {
-            switch state {
+            switch trafficState {
                 
             case .disable:
-                redCircle.state = .disable
-                yellowCircle.state = .disable
-                greenCircle.state = .disable
+                redCircle.trafficCircleState = .disable
+                yellowCircle.trafficCircleState = .disable
+                greenCircle.trafficCircleState = .disable
             case .activeRed:
-                redCircle.state = .enable
-                yellowCircle.state = .disable
-                greenCircle.state = .disable
+                redCircle.trafficCircleState = .enable
+                yellowCircle.trafficCircleState = .disable
+                greenCircle.trafficCircleState = .disable
             case .activeYellow:
-                redCircle.state = .disable
-                yellowCircle.state = .enable
-                greenCircle.state = .disable
+                redCircle.trafficCircleState = .disable
+                yellowCircle.trafficCircleState = .enable
+                greenCircle.trafficCircleState = .disable
             case .activeGreen:
-                redCircle.state = .disable
-                yellowCircle.state = .disable
-                greenCircle.state = .enable
+                redCircle.trafficCircleState = .disable
+                yellowCircle.trafficCircleState = .disable
+                greenCircle.trafficCircleState = .enable
             }
         }
     }
     
-    var redCircle = TrafficCircle(color: .red, state: .disable)
-    var yellowCircle = TrafficCircle(color: .yellow, state: .disable)
-    var greenCircle = TrafficCircle(color: .green, state: .disable)
+    var redCircle = TrafficCircle(color: .red, trafficCircleState: .disable)
+    var yellowCircle = TrafficCircle(color: .yellow, trafficCircleState: .disable)
+    var greenCircle = TrafficCircle(color: .green, trafficCircleState: .disable)
     
     var body: some View {
         VStack {
@@ -61,6 +61,6 @@ struct TrafficLightView: View {
 
 struct TrafficLightView_Previews: PreviewProvider {
     static var previews: some View {
-        TrafficLightView(state: .disable)
+        TrafficLightView(trafficState: .disable)
     }
 }

@@ -9,10 +9,10 @@ import SwiftUI
 
 struct TrafficCircle: View {
     var color: Color
-    var state: TrafficCircleState
+    var trafficCircleState: TrafficCircleState
     
     private var opacity: Double {
-        switch state {
+        switch trafficCircleState {
         case .enable:
             return 1
         case .disable:
@@ -34,6 +34,6 @@ struct TrafficCircle: View {
 
 struct TrafficCircle_Previews: PreviewProvider {
     static var previews: some View {
-        TrafficCircle(color: .red, state: .disable)
+        TrafficCircle(color: .red, trafficCircleState: .disable)
     }
 }

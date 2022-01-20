@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct ContentView: View {
-    
     private let cornerRadius: CGFloat = 40
     
     var body: some View {
@@ -22,7 +21,7 @@ struct ContentView: View {
         }
     }
     
-    @State private var trafficLightView = TrafficLightView(state: .disable)
+    @State private var trafficLightView = TrafficLightView(trafficState: .disable)
     private var background: some View {
         Color(uiColor: .darkGray)
             .ignoresSafeArea()
@@ -30,16 +29,16 @@ struct ContentView: View {
     
     private var nextButton: some View {
         Button(action: {
-            switch trafficLightView.state {
+            switch trafficLightView.trafficState {
                 
             case .disable:
-                trafficLightView.state = .activeRed
+                trafficLightView.trafficState = .activeRed
             case .activeRed:
-                trafficLightView.state = .activeYellow
+                trafficLightView.trafficState = .activeYellow
             case .activeYellow:
-                trafficLightView.state = .activeGreen
+                trafficLightView.trafficState = .activeGreen
             case .activeGreen:
-                trafficLightView.state = .activeRed
+                trafficLightView.trafficState = .activeRed
             }
 
         }) {
@@ -53,11 +52,8 @@ struct ContentView: View {
         .clipShape(RoundedRectangle(cornerRadius: cornerRadius))
         .overlay(RoundedRectangle(cornerRadius: cornerRadius)
                     .stroke(Color.white, lineWidth: 6)
-            
         )
-        
     }
-    
 }
 
 struct ContentView_Previews: PreviewProvider {
