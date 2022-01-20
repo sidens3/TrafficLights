@@ -10,18 +10,20 @@ import SwiftUI
 struct ContentView: View {
     
     private let cornerRadius: CGFloat = 40
+    @State private var trafficState: TrafficState = .disable
     
     var body: some View {
         ZStack {
             background
             VStack {
-                TrafficLightView(state: .disable)
+                trafficLightView
                 Spacer()
                 nextButton
             }
         }
     }
     
+    @State private var trafficLightView = TrafficLightView(state: .disable)
     private var background: some View {
         Color(uiColor: .darkGray)
             .ignoresSafeArea()
@@ -29,7 +31,7 @@ struct ContentView: View {
     
     private var nextButton: some View {
         Button(action: {
-            print("NEXT")
+            trafficLightView.state = .activeGreen
         }) {
             Text("Next")
                 .fontWeight(.bold)

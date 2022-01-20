@@ -12,7 +12,7 @@ enum TrafficCircleState {
     case disable
 }
 
-enum TrafficState {
+enum TrafficState: CaseIterable {
     case disable
     case activeRed
     case activeYellow
@@ -20,13 +20,33 @@ enum TrafficState {
 }
 
 struct TrafficLightView: View {
-    var state: TrafficState
+    var state: TrafficState {
+        didSet {
+            switch state {
+                
+            case .disable:
+                redCircle.state = .disable
+                yellowCircle.state = .disable
+                greenCircle.state = .disable
+            case .activeRed:
+                redCircle.state = .enable
+                yellowCircle.state = .disable
+                greenCircle.state = .disable
+            case .activeYellow:
+                redCircle.state = .disable
+                yellowCircle.state = .enable
+                greenCircle.state = .disable
+            case .activeGreen:
+                redCircle.state = .disable
+                yellowCircle.state = .disable
+                greenCircle.state = .enable
+            }
+        }
+    }
     
     var redCircle = TrafficCircle(color: .red, state: .disable)
     var yellowCircle = TrafficCircle(color: .yellow, state: .disable)
     var greenCircle = TrafficCircle(color: .green, state: .disable)
-    
-    
     
     var body: some View {
         VStack {
@@ -36,21 +56,6 @@ struct TrafficLightView: View {
                 .padding(.bottom, 16)
             greenCircle
         }.padding()
-    }
-}
-
-struct TrafficCircle: View {
-    var color: Color
-    let state: TrafficCircleState
-    
-    var body: some View {
-        VStack {
-            Circle()
-                .foregroundColor(color)
-                .frame(width: UIScreen.main.bounds.width / 3 ,
-                       height: UIScreen.main.bounds.width / 3)
-                .overlay(Circle().stroke(Color.white, lineWidth: 6))
-        }
     }
 }
 
