@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    private let cornerRadius: CGFloat = 40
+    
     var body: some View {
         ZStack {
             background
@@ -34,10 +37,15 @@ struct ContentView: View {
                 .foregroundColor(.white)
         }
         .frame(width: UIScreen.main.bounds.width / 2, height: 50, alignment: .center)
-        .overlay(RoundedRectangle(cornerRadius: 40)
-                    .stroke(Color.white, lineWidth: 6))
         .background(Color.blue)
+        .clipShape(RoundedRectangle(cornerRadius: cornerRadius))
+        .overlay(RoundedRectangle(cornerRadius: cornerRadius)
+                    .stroke(Color.white, lineWidth: 6)
+            
+        )
+        
     }
+    
 }
 
 struct ContentView_Previews: PreviewProvider {
