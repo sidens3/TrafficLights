@@ -12,7 +12,7 @@ enum TrafficCircleState {
     case disable
 }
 
-enum TrafficState: CaseIterable {
+enum TrafficState {
     case disable
     case activeRed
     case activeYellow
